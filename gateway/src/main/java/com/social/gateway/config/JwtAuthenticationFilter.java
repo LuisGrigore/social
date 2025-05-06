@@ -46,6 +46,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
-        chain.doFilter(request, response);
+        RequestWrapper wrappedRequest = new RequestWrapper(request);
+        if (jwt != null) {
+            String userId = jwtUtil.extractAllClaims(jwt).get("id", String.class);
+            wrappedRequest.addHeader("id", userId);
+        }
+
+        chain.doFilter(wrappedRequest, response);
     }
 }
