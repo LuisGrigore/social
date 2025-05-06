@@ -43,6 +43,8 @@
 
 	<modules>
 		<module>gateway</module>
+		<module>discovery</module>
 	</modules>
+
 
 </project>
