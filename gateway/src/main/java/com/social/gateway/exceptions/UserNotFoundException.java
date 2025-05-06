@@ -1,4 +1,5 @@
-package com.social.gateway.exceptions.not_found;
+package com.social.gateway.exceptions;
+import com.social.common.exceptions.NotFoundException;
 
 public class UserNotFoundException extends NotFoundException {
     public UserNotFoundException(String message) {

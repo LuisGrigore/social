@@ -1,5 +1,6 @@
 package com.social.gateway.services.implementations.mappers;
 
+import com.social.common.dtos.UserCreateEvent;
 import com.social.gateway.dtos.RegisterUserRequest;
 import com.social.gateway.dtos.RegisterUserResponse;
 import com.social.gateway.model.UserAuthEntity;
@@ -11,6 +12,9 @@ import java.time.Instant;
 
 @Mapper(componentModel = "spring")
 public abstract class UserAuthMapper {
+
+    public abstract UserCreateEvent toUserCreateEvent(UserAuthEntity userAuthEntity);
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 

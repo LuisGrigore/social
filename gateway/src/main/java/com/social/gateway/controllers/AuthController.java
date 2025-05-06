@@ -1,14 +1,14 @@
 package com.social.gateway.controllers;
 
+import com.social.common.dtos.ApiExceptionResponse;
+import com.social.common.exceptions.DuplicateException;
 import com.social.gateway.dtos.*;
-import com.social.gateway.exceptions.duplicate.DuplicateException;
-import com.social.gateway.exceptions.duplicate.DuplicateUserException;
-import com.social.gateway.exceptions.not_found.UserNotFoundException;
+import com.social.gateway.exceptions.DuplicateUserException;
+import com.social.gateway.exceptions.UserNotFoundException;
 import com.social.gateway.services.JwtService;
 import com.social.gateway.services.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;

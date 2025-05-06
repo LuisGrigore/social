@@ -1,4 +1,4 @@
-package com.social.gateway.dtos;
+package com.social.common.dtos;
 
 
 

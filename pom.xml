@@ -45,6 +45,7 @@
 		<module>gateway</module>
 		<module>discovery</module>
 		<module>user-details</module>
+		<module>common</module>
 	</modules>
 
 

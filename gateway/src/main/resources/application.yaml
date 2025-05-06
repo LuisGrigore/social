@@ -15,6 +15,9 @@ spring:
     password: users_db
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  kafka:
+    bootstrap-servers: localhost:29092
+
 eureka:
   client:
     serviceUrl:
@@ -24,9 +27,9 @@ cloud:
   gateway:
     routes:
       - id: employeeModule
-        uri: lb://FIRST-SERVICE
+        uri: lb://USER-DETAILS
         predicates:
-          - Path=/employee/**
+          - Path=/user-details/**
 
 
 
