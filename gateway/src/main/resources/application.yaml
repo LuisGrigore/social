@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/users
+    username: root
+    password: users_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+jwt:
+  secret: eda3e0baf6afe006178c1098bad7b344e6d68e811437b6b68f8b590aa30e3ca0c08f759e7a2be38886a152f4f2924ca84071213c8301f1ca3015f07051727083cf2385942ce084a1ecb49dc8fb9ea92f4a00a253858f87e832a0f1e21486a0add16c8f73dc5b784b3b4cf03efb6abd3a94b5e2357b719104c0ca60689a5ec63d9eea1d69581204e390aaee06cfd614385c538b4dfeadb10a500dfcdcba22c693e281d8201ae6c3a551c338c81df3749f6654a5a903e7b9d87011ee23de6a45aedba81c3c9346afd4f8ac96460d70b908fb0c6afbb3fff5edbbfdf4f9c3e16a62db0fcf82fdf1de112db1094a134a8dd435780d1361bd9003cd98c83d3c7e113c
