@@ -20,8 +20,6 @@ import java.io.IOException;
 
 @AllArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
-
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
@@ -31,8 +29,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
         final String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-
-        System.out.println(authorizationHeader);
 
         String username = null;
         String jwt = null;
