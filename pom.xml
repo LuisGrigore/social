@@ -42,10 +42,11 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>gateway</module>
+		<module>auth</module>
 		<module>discovery</module>
 		<module>user-details</module>
 		<module>common</module>
+		<module>gateway</module>
 	</modules>
 
 
