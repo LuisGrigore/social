@@ -7,11 +7,11 @@ spring:
         - id: auth
           uri: lb://AUTH
           predicates:
-            - Path=/auth/**
+            - Path=/auth/login, /auth/signup
         - id: account-delete
           uri: lb://AUTH
           predicates:
-            - Path=/account/**
+            - Path=/account
             - Method=DELETE
           filters:
             - AuthenticationFilter

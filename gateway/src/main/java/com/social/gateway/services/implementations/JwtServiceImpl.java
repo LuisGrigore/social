@@ -21,7 +21,7 @@ public class JwtServiceImpl implements JwtService {
     public Mono<ValidateResponse> validateToken(final String token){
         return webClientBuilder.build()
                 .post()
-                .uri("http://localhost:8082/auth/validate")
+                .uri("http://AUTH/auth/validate")
                 .bodyValue(new ValidateRequest(token))
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
