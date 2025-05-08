@@ -1,7 +1,7 @@
 package com.social.user_details.services.implementations;
 
-import com.social.common.dtos.UserCreateEvent;
-import com.social.common.dtos.UserDeleteEvent;
+import com.social.common.events.UserCreateEvent;
+import com.social.common.events.UserDeleteEvent;
 import com.social.user_details.exceptions.DuplicateUserDetailsException;
 import com.social.user_details.exceptions.NotFoundUserDetailsException;
 import com.social.user_details.repos.UserDetailsRepos;

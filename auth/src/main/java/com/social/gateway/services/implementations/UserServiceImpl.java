@@ -1,6 +1,6 @@
 package com.social.gateway.services.implementations;
 
-import com.social.common.dtos.UserDeleteEvent;
+import com.social.common.events.UserDeleteEvent;
 import com.social.gateway.dtos.DeleteAcountRequest;
 import com.social.gateway.dtos.DeleteAcountResponse;
 import com.social.gateway.dtos.RegisterUserRequest;

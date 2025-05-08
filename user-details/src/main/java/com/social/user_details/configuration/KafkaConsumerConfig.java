@@ -1,6 +1,6 @@
 package com.social.user_details.configuration;
 
-import com.social.common.dtos.UserCreateEvent;
+import com.social.common.events.UserCreateEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;

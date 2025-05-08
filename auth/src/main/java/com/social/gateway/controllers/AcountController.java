@@ -7,6 +7,7 @@ import com.social.gateway.dtos.DeleteAcountResponse;
 import com.social.gateway.exceptions.UserNotFoundException;
 import com.social.gateway.services.UserService;
 import com.social.gateway.util.JwtUtil;
+import io.jsonwebtoken.MalformedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,13 +46,11 @@ public class AcountController {
 
     @DeleteMapping
     public ResponseEntity<DeleteAcountResponse> deleteAcount(HttpServletRequest request, @RequestBody DeleteAcountRequest deleteAcountRequest) throws Exception{
-        final String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer "))
-            throw new Exception("a");
-
-        String jwt = authorizationHeader.substring(7);
-        String id = jwtUtil.extractUsername(jwt);
-
-        return ResponseEntity.ok( userService.deleteAcount(deleteAcountRequest,jwtUtil.extractClaim(jwt, claims -> claims.get("id", Long.class))));
+        try {
+            final Long id = Long.parseLong(request.getHeader("id"));
+            return ResponseEntity.ok( userService.deleteAcount(deleteAcountRequest, id));
+        }catch(Exception e){
+            throw new UserNotFoundException("Invalid id.");
+        }
     }
 }

@@ -1,10 +1,11 @@
-package com.social.gateway.config;
+package com.social.posts.configuration.kafka;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import com.social.common.events.UserCreateEvent;
-import com.social.common.events.UserDeleteEvent;
+
+import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDeleteEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,11 +52,11 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, UserCreateEvent> userCreateEventKafkaTemplate() {
-        return kafkaTemplate(UserCreateEvent.class);
+    public KafkaTemplate<String, PostCreateEvent> postCreateEventKafkaTemplate() {
+        return kafkaTemplate(PostCreateEvent.class);
     }
     @Bean
-    public KafkaTemplate<String, UserDeleteEvent> userDeleteEventKafkaTemplate() {
-        return kafkaTemplate(UserDeleteEvent.class);
+    public KafkaTemplate<String, PostDeleteEvent> postDeleteEventKafkaTemplate() {
+        return kafkaTemplate(PostDeleteEvent.class);
     }
 }

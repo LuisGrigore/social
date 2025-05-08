@@ -1,4 +1,4 @@
-package com.social.common.dtos;
+package com.social.common.events;
 
 public record UserCreateEvent(Long id){
 }

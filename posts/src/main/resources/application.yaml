@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: posts
+  kafka:
+    bootstrap-servers: localhost:29092
+
+server:
+  port: 8084
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8083/eureka

@@ -45,6 +45,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                         ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
                                 .header("id", validateResponse.id().toString())
                                 .header("username", validateResponse.username())
+                                .headers(headers -> headers.remove(HttpHeaders.AUTHORIZATION))
                                 .build();
 
                         return chain.filter(exchange.mutate().request(mutatedRequest).build());

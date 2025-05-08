@@ -1,6 +1,6 @@
 package com.social.user_details.services.implementations.mappers;
 
-import com.social.common.dtos.UserCreateEvent;
+import com.social.common.events.UserCreateEvent;
 import com.social.user_details.model.UserDetailsEntity;
 import org.mapstruct.Mapper;
 

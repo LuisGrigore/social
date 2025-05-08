@@ -1,6 +1,6 @@
 package com.social.gateway.services.implementations.mappers;
 
-import com.social.common.dtos.UserCreateEvent;
+import com.social.common.events.UserCreateEvent;
 import com.social.gateway.dtos.RegisterUserRequest;
 import com.social.gateway.dtos.RegisterUserResponse;
 import com.social.gateway.model.UserAuthEntity;

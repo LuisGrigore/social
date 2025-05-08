@@ -1,7 +1,7 @@
 package com.social.gateway.producers.implementations;
 
-import com.social.common.dtos.UserCreateEvent;
-import com.social.common.dtos.UserDeleteEvent;
+import com.social.common.events.UserCreateEvent;
+import com.social.common.events.UserDeleteEvent;
 import com.social.gateway.producers.UserEventProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
