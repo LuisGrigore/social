@@ -5,15 +5,16 @@ import com.social.posts.dtos.RegisterPostRequest;
 import com.social.posts.dtos.RegisterPostResponse;
 import com.social.posts.producers.PostEventProducer;
 import com.social.posts.services.PostService;
-import io.minio.BucketExistsArgs;
-import io.minio.MakeBucketArgs;
-import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
+import io.minio.*;
+import io.minio.errors.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Service
@@ -22,18 +23,27 @@ public class PostServiceImpl implements PostService {
 
     private final PostEventProducer postEventProducer;
     private final MinioClient minioClient;
+    private final String BUCKET_NAME = "posts";
 
     @Override
     public RegisterPostResponse registerPost(RegisterPostRequest registerPostRequest, Long owner) throws Exception {
-        final String bucketName = "posts";
 
-        createBucketIfNotExists(bucketName);
+        createBucketIfNotExists(BUCKET_NAME);
 
-        String objectName = "post-" + UUID.randomUUID() + "-" + registerPostRequest.file().getOriginalFilename();
-        uploadToMinIO(registerPostRequest.file(), objectName, bucketName);
-        String contentUrl = "http://localhost:9000/" + bucketName + "/" + objectName;
+        String objectName = "post_id:" + UUID.randomUUID() + "-post_name:" + registerPostRequest.file().getOriginalFilename();
+        uploadToMinIO(registerPostRequest.file(), objectName, BUCKET_NAME);
+        String contentUrl = "http://localhost:8080/posts/" + objectName;
         postEventProducer.producePostCreateEvent(new PostCreateEvent(contentUrl, owner));
         return new RegisterPostResponse(contentUrl);
+    }
+
+    @Override
+    public InputStream getPostImage(String objectName) throws ServerException, InsufficientDataException, ErrorResponseException, IOException, NoSuchAlgorithmException, InvalidKeyException, InvalidResponseException, XmlParserException, InternalException {
+        return minioClient.getObject(
+                GetObjectArgs.builder()
+                        .bucket(BUCKET_NAME)
+                        .object(objectName)
+                        .build());
     }
 
     private void createBucketIfNotExists(String bucketName) {

@@ -4,11 +4,15 @@ import com.social.posts.dtos.RegisterPostRequest;
 import com.social.posts.dtos.RegisterPostResponse;
 import com.social.posts.services.PostService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.InputStream;
 
 @RestController
 @RequestMapping("/posts")
@@ -23,6 +27,17 @@ public class PostController {
             return ResponseEntity.ok(postService.registerPost(registerPostRequest, Long.parseLong(request.getHeader("id"))));
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/{objectName}")
+    public void getPostImage(@PathVariable String objectName, HttpServletResponse response) {
+        try {
+            InputStream inputStream = postService.getPostImage(objectName);
+            StreamUtils.copy(inputStream, response.getOutputStream());
+            response.flushBuffer();
+        } catch (Exception e) {
+            throw new RuntimeException("Error retrieving file from MinIO", e);
         }
     }
 }
