@@ -17,7 +17,11 @@ public class UserDetailsConsumer {
 
     private final UserDetailsService userDetailsService;
 
-    @KafkaListener(topics = "user.create", groupId = "user-details")
+    @KafkaListener(
+            topics = "user.create",
+            groupId = "user-details",
+            containerFactory = "userCreateListenerContainerFactory"
+    )
     public void consumeUserCreateEvent(UserCreateEvent userCreateEvent){
         try {
             userDetailsService.saveUserDetails(userCreateEvent);
@@ -27,7 +31,11 @@ public class UserDetailsConsumer {
         }
     }
 
-    @KafkaListener(topics = "user.delete", groupId = "user-details")
+    @KafkaListener(
+            topics = "user.delete",
+            groupId = "user-details",
+            containerFactory = "userDeleteListenerContainerFactory"
+    )
     public void consumeUserDeleteEvent(UserDeleteEvent userDeleteEvent){
         try {
             userDetailsService.deleteUserDetails(userDeleteEvent);

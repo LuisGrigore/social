@@ -24,7 +24,7 @@ public class PostServiceImpl implements PostService {
     private final MinioClient minioClient;
 
     @Override
-    public RegisterPostResponse registerPost(RegisterPostRequest registerPostRequest) throws Exception {
+    public RegisterPostResponse registerPost(RegisterPostRequest registerPostRequest, Long owner) throws Exception {
         final String bucketName = "posts";
 
         createBucketIfNotExists(bucketName);
@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService {
         String objectName = "post-" + UUID.randomUUID() + "-" + registerPostRequest.file().getOriginalFilename();
         uploadToMinIO(registerPostRequest.file(), objectName, bucketName);
         String contentUrl = "http://localhost:9000/" + bucketName + "/" + objectName;
-        postEventProducer.producePostCreateEvent(new PostCreateEvent(contentUrl));
+        postEventProducer.producePostCreateEvent(new PostCreateEvent(contentUrl, owner));
         return new RegisterPostResponse(contentUrl);
     }
 

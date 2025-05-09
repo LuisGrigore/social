@@ -1,7 +1,8 @@
-package com.social.user_details.configuration;
+package com.social.posts_details.config;
 
-import com.social.common.events.UserCreateEvent;
-import com.social.common.events.UserDeleteEvent;
+
+import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDeleteEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +35,8 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, UserCreateEvent> userCreateConsumerFactory() {
-        JsonDeserializer<UserCreateEvent> deserializer = new JsonDeserializer<>(UserCreateEvent.class);
+    public ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory() {
+        JsonDeserializer<PostCreateEvent> deserializer = new JsonDeserializer<>(PostCreateEvent.class);
         deserializer.addTrustedPackages("*");
 
         return new DefaultKafkaConsumerFactory<>(
@@ -46,17 +47,17 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, UserCreateEvent>> userCreateListenerContainerFactory(
-            ConsumerFactory<String, UserCreateEvent> userCreateConsumerFactory
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostCreateEvent>> postCreateListenerContainerFactory(
+            ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory
     ){
-        ConcurrentKafkaListenerContainerFactory<String, UserCreateEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(userCreateConsumerFactory);
+        ConcurrentKafkaListenerContainerFactory<String, PostCreateEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(postCreateConsumerFactory);
         return factory;
     }
 
     @Bean
-    public ConsumerFactory<String, UserDeleteEvent> userDeleteConsumerFactory() {
-        JsonDeserializer<UserDeleteEvent> deserializer = new JsonDeserializer<>(UserDeleteEvent.class);
+    public ConsumerFactory<String, PostDeleteEvent> postDeleteConsumerFactory() {
+        JsonDeserializer<PostDeleteEvent> deserializer = new JsonDeserializer<>(PostDeleteEvent.class);
         deserializer.addTrustedPackages("*");
 
         return new DefaultKafkaConsumerFactory<>(
@@ -67,11 +68,11 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, UserDeleteEvent>> userDeleteListenerContainerFactory(
-            ConsumerFactory<String, UserDeleteEvent> userDeleteConsumerFactory
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostDeleteEvent>> postDeleteListenerContainerFactory(
+            ConsumerFactory<String, PostDeleteEvent> postDeleteConsumerFactory
     ) {
-        ConcurrentKafkaListenerContainerFactory<String, UserDeleteEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(userDeleteConsumerFactory);
+        ConcurrentKafkaListenerContainerFactory<String, PostDeleteEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(postDeleteConsumerFactory);
         return factory;
     }
 }

@@ -4,5 +4,5 @@ import com.social.posts.dtos.RegisterPostRequest;
 import com.social.posts.dtos.RegisterPostResponse;
 
 public interface PostService {
-    RegisterPostResponse registerPost(RegisterPostRequest registerPostRequest) throws Exception;
+    RegisterPostResponse registerPost(RegisterPostRequest registerPostRequest, Long owner) throws Exception;
 }

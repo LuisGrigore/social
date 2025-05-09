@@ -22,6 +22,12 @@ spring:
             - Method=GET
           filters:
             - AuthenticationFilter
+        - id: posts
+          uri: lb://POSTS
+          predicates:
+            - Path=/posts/**
+          filters:
+            - AuthenticationFilter
 
 server:
   port: 8080
