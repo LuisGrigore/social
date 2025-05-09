@@ -1,4 +1,4 @@
 package com.social.common.events;
 
-public record UserCreateEvent(Long id){
+public record UserCreateEvent(Long id, String username){
 }

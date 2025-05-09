@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
@@ -15,4 +18,7 @@ import lombok.NoArgsConstructor;
 public class UserDetailsEntity {
     @Id
     private Long id;
+    private String username;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }
