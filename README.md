@@ -15,13 +15,14 @@
 
 ## 🧪 Microservices
 
-| Service            | Adress                              | Descripción                         |
-|--------------------|-------------------------------------|-------------------------------------|
-| `auth`             | //AUTH/**                           | Authentication and JWT generation   |
-| `user-details`     | //USER-DETAILS/**                   | CRUD de usuarios                    |
-| `post-persist`     | //POST-PERSIST/**                   | Persists and retrieves post blobs from bucket                 |
-| `notification`     | //NOTIFICATION/**                   | Envío de correos y notificaciones   |
-| `gateway`          | http://"IP":8080/api/v"VERSION"/**  | Punto de entrada a la plataforma    |
+| Service          | Address                                | Description                                       |
+|------------------|----------------------------------------|---------------------------------------------------|
+| `auth`           | `//AUTH/**`                            | Authentication and JWT generation                 |
+| `user-details`   | `//USER-DETAILS/**`                    | Handles user metadata                             |
+| `post-persist`   | `//POST-PERSIST/**`                    | Persists and retrieves post blobs from the bucket |
+| `notification`   | `//NOTIFICATION/**`                    | Sends notifications to users                      |
+| `gateway`        | `http://<IP>:8080/api/v<VERSION>/**`   | Entry point to the platform                       |
+
 
 ---
 
