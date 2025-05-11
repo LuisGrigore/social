@@ -2,29 +2,7 @@
 
 ## A platform centered around images, meant to be simple and straightforward.
 
-> Ejemplo: Plataforma backend distribuida basada en microservicios para gestionar usuarios, pedidos y notificaciones en una tienda en línea.
-
----
-
-## 📂 Estructura del Proyecto
-
-```
-/
-├── services/
-│   ├── auth-service/
-│   ├── user-service/
-│   ├── order-service/
-│   └── notification-service/
-├── gateway/
-├── shared-libraries/
-├── docker/
-├── docs/
-└── README.md
-```
-
----
-
-## 🚀 Tecnologías Principales
+### 🚀 Main technologies used:
 
 - Lenguaje: Node.js / Python / Go / Java
 - Framework: Express / FastAPI / Spring Boot
