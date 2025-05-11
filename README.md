@@ -14,7 +14,7 @@
 ---
 
 ## 🧪 System Diagram:
-![Logo](https://drive.google.com/file/d/1PfaAH-r5KWaXHsVOnzBiJe0khLZEF2a1/view?usp=sharing)
+![Logo](./docs/SystemDiagram.png)
 ---
 
 ## 🧪 Microservices
