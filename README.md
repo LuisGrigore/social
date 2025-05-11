@@ -1,6 +1,6 @@
-#Social Network Backend
+# Social Network Backend
 
-##A platform centered around images, meant to be simple and straightforward.
+## A platform centered around images, meant to be simple and straightforward.
 
 > Ejemplo: Plataforma backend distribuida basada en microservicios para gestionar usuarios, pedidos y notificaciones en una tienda en línea.
 
