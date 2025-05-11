@@ -4,12 +4,12 @@
 
 ### 🚀 Main technologies used:
 
-- Lenguaje: Java
-- Framework: Spring Boot
-- Comunicación: REST / Kafka
-- Discovery: Eureka Discovery.
-- Base de datos: MySql / MiniIo / Redis
-- Contenedores: Docker / Docker Compose
+- **Language:** Java  
+- **Framework:** Spring Boot  
+- **Communication:** REST / Kafka  
+- **Service Discovery:** Eureka  
+- **Databases & Storage:** MySQL / MinIO / Redis  
+- **Containers:** Docker / Docker Compose  
 
 ---
 
