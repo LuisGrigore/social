@@ -15,14 +15,15 @@
 
 ## 🧪 Microservices
 
-| Service          | Address                                | Description                                       |
-|------------------|----------------------------------------|---------------------------------------------------|
-| `auth`           | `//AUTH/**`                            | Authentication and JWT generation                 |
-| `user-details`   | `//USER-DETAILS/**`                    | Handles user metadata                             |
-| `post-persist`   | `//POST-PERSIST/**`                    | Persists and retrieves post blobs from the bucket |
-| `notification`   | `//NOTIFICATION/**`                    | Sends notifications to users                      |
-| `gateway`        | `http://<IP>:8080/api/v<VERSION>/**`   | Entry point to the platform                       |
-
+| Service         | Address                                  | Description                                                                 |
+|-----------------|------------------------------------------|-----------------------------------------------------------------------------|
+| `discovery`     | `http://localhost:8083/eureka`           | Handles service discovery and load balancing between microservice instances |
+| `auth`          | `//AUTH/**`                              | Handles authentication and JWT generation                                   |
+| `user-details`  | `//USER-DETAILS/**`                      | Manages user metadata                                                       |
+| `post-persist`  | `//POST-PERSIST/**`                      | Stores and retrieves post blobs from bucket storage                         |
+| `post-details`  | `//POST-DETAILS/**`                      | Manages post metadata                                                       |
+| `notification`  | `//NOTIFICATION/**`                      | Sends notifications to users                                                |
+| `gateway`       | `http://<IP>:8080/api/v<VERSION>/**`     | Entry point to the platform; also handles authorization                     |
 
 ---
 
