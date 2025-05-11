@@ -4,13 +4,11 @@
 
 ### 🚀 Main technologies used:
 
-- Lenguaje: Node.js / Python / Go / Java
-- Framework: Express / FastAPI / Spring Boot
-- Comunicación: REST / gRPC / RabbitMQ / Kafka
-- API Gateway: Kong / NGINX / Traefik
-- Base de datos: PostgreSQL / MongoDB / Redis
+- Lenguaje: Java
+- Framework: Spring Boot
+- Comunicación: REST / Kafka
+- Base de datos: MySql / MiniIo / Redis
 - Contenedores: Docker / Docker Compose
-- Orquestación: Kubernetes (si aplica)
 
 ---
 
