@@ -25,24 +25,18 @@
 
 ---
 
-## ⚙️ Instalación y Ejecución
+## ⚙️ Instalation and execution
 
-### Requisitos
+### Prerequisits
 
 - Docker & Docker Compose
-- Node.js / Python (si es necesario fuera de Docker)
 
 ### Clonar y levantar servicios
 
 ```bash
-git clone https://github.com/usuario/proyecto-backend.git
-cd proyecto-backend
-docker-compose up --build
+
 ```
 
-Acceder vía navegador: [http://localhost:8080](http://localhost:8080)
-
----
 
 ## 📌 Variables de Entorno
 
