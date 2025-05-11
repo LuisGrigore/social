@@ -7,20 +7,21 @@
 - Lenguaje: Java
 - Framework: Spring Boot
 - Comunicación: REST / Kafka
+- Discovery: Eureka Discovery.
 - Base de datos: MySql / MiniIo / Redis
 - Contenedores: Docker / Docker Compose
 
 ---
 
-## 🧪 Servicios
+## 🧪 Microservices
 
-| Servicio               | Puerto | Descripción                         |
-|------------------------|--------|-------------------------------------|
-| `auth-service`         | 8001   | Maneja autenticación y JWT          |
-| `user-service`         | 8002   | CRUD de usuarios                    |
-| `order-service`        | 8003   | Gestión de pedidos                  |
-| `notification-service` | 8004   | Envío de correos y notificaciones   |
-| `gateway`              | 8080   | Punto de entrada a la plataforma    |
+| Service            | Adress      | Descripción                         |
+|--------------------|-------------|-------------------------------------|
+| `auth`             | //AUTH/**   | Authentication and JWT generation   |
+| `user-details`     | 8002        | CRUD de usuarios                    |
+| `post-persist`     | 8003        | Gestión de pedidos                  |
+| `notification`     | 8004        | Envío de correos y notificaciones   |
+| `gateway`          | 8080        | Punto de entrada a la plataforma    |
 
 ---
 
