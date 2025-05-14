@@ -8,6 +8,7 @@ spring:
           uri: lb://AUTH
           predicates:
             - Path=/auth/login, /auth/signup
+
         - id: account-delete
           uri: lb://AUTH
           predicates:
@@ -15,31 +16,42 @@ spring:
             - Method=DELETE
           filters:
             - AuthenticationFilter
+
         - id: posts
           uri: lb://POSTS
           predicates:
-            - Path=/posts/**
-            - Method=GET,POST
+            - Path=/posts
+            - Method=POST
           filters:
             - AuthenticationFilter
-        - id: post-details-delete
-          uri: lb://POST-DETAILS
+
+        - id: posts
+          uri: lb://POSTS
           predicates:
-            - Path=/posts/**
-            - Method=DELETE
-          filters:
-            - AuthenticationFilter
-        - id: post-details-get-by-user
-          uri: lb://POST-DETAILS
-          predicates:
-            - Path=/user/posts
+            - Path=/posts/{objectName}
             - Method=GET
           filters:
             - AuthenticationFilter
+
+        - id: post-details-delete
+          uri: lb://POST-DETAILS
+          predicates:
+            - Path=/posts, /user/posts
+            - Method=DELETE, GET
+          filters:
+            - AuthenticationFilter
+
         - id: comments
           uri: lb://COMMENTS
           predicates:
             - Path=/comments
+          filters:
+            - AuthenticationFilter
+
+        - id: comments-by-post
+          uri: lb://COMMENTS
+          predicates:
+            - Path=/posts/{postId}/comments
           filters:
             - AuthenticationFilter
 
