@@ -14,7 +14,9 @@
 ---
 
 ## 🧪 System Diagram:
-![Logo](https://drive.google.com/file/d/1PfaAH-r5KWaXHsVOnzBiJe0khLZEF2a1/view?usp=sharing)
+
+![Logo](./docs/SystemDiagram.png)
+
 ---
 
 ## 🧪 Microservices
@@ -22,7 +24,7 @@
 | Service         | Address                                  | Description                                                                 |
 |-----------------|------------------------------------------|-----------------------------------------------------------------------------|
 | `discovery`     | `http://localhost:8083/eureka`           | Handles service discovery and load balancing between microservice instances |
-| `auth`          | `//AUTH/**`                              | Handles authentication and JWT generation                                   |
+| `auth`          | `//AUTH/**`                              | Handles authentication and JWT generation/validation                        |
 | `user-details`  | `//USER-DETAILS/**`                      | Manages user metadata                                                       |
 | `post-persist`  | `//POST-PERSIST/**`                      | Stores and retrieves post blobs from bucket storage                         |
 | `post-details`  | `//POST-DETAILS/**`                      | Manages post metadata                                                       |
