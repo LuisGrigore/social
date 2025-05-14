@@ -49,6 +49,7 @@
 		<module>gateway</module>
 		<module>posts</module>
 		<module>posts-details</module>
+		<module>comments</module>
 	</modules>
 
 

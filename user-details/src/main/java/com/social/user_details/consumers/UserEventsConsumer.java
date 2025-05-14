@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class UserDetailsConsumer {
+public class UserEventsConsumer {
 
     private final UserDetailsService userDetailsService;
 

@@ -15,13 +15,6 @@ spring:
             - Method=DELETE
           filters:
             - AuthenticationFilter
-        - id: user-details
-          uri: lb://USER-DETAILS
-          predicates:
-            - Path=/a
-            - Method=GET
-          filters:
-            - AuthenticationFilter
         - id: posts
           uri: lb://POSTS
           predicates:
@@ -29,13 +22,22 @@ spring:
             - Method=GET,POST
           filters:
             - AuthenticationFilter
-        - id: post-details
+        - id: post-details-delete
           uri: lb://POST-DETAILS
           predicates:
             - Path=/posts/**
             - Method=DELETE
           filters:
             - AuthenticationFilter
+        - id: post-details-get-by-user
+          uri: lb://POST-DETAILS
+          predicates:
+            - Path=/user/posts
+            - Method=GET
+          filters:
+            - AuthenticationFilter
+
+
 
 server:
   port: 8080
