@@ -1,6 +1,5 @@
 package com.social.posts.consummers;
 
-import com.social.common.events.PostCreateEvent;
 import com.social.common.events.PostDeleteEvent;
 import com.social.posts.services.PostService;
 import lombok.AllArgsConstructor;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class PostDetailsConsumer {
+public class PostEventConsumer {
 
     private final PostService postService;
 

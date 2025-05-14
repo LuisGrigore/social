@@ -5,4 +5,8 @@ import com.social.comments.dtos.CommentCreationResponse;
 
 public interface CommentService {
     CommentCreationResponse createComment(CommentCreationRequest commentCreationRequest, Long id);
+
+    void deleteByPostId(Long id);
+
+    void deleteByOwnerId(Long id);
 }

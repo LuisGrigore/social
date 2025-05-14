@@ -6,6 +6,7 @@ import com.social.comments.dtos.CommentCreationResponse;
 import com.social.comments.model.CommentEntity;
 import com.social.comments.repos.CommentRepos;
 import com.social.comments.services.CommentService;
+import com.social.common.events.PostDeleteEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,17 @@ public class CommentServiceImpl implements CommentService {
                         .content(commentCreationRequest.content())
                 .build());
         return new CommentCreationResponse(savedComment.getContent());
+    }
+
+    @Override
+    public void deleteByPostId(Long id) {
+        commentRepos.findByPost(id)
+                .forEach(commentRepos::delete);
+    }
+
+    @Override
+    public void deleteByOwnerId(Long id) {
+        commentRepos.findByOwner(id)
+                .forEach(commentRepos::delete);
     }
 }
