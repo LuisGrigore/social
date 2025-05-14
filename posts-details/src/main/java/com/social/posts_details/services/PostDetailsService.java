@@ -1,10 +1,10 @@
 package com.social.posts_details.services;
 
+import com.social.common.dtos.PostDeleteRequest;
+import com.social.common.dtos.PostDeleteResponse;
 import com.social.common.events.PostCreateEvent;
-import com.social.common.events.PostDeleteEvent;
 
 public interface PostDetailsService {
     void savePostDetails(PostCreateEvent postCreateEvent);
-
-    void deletePostDetails(PostDeleteEvent postDeleteEvent);
+    PostDeleteResponse deletePost(PostDeleteRequest postDeleteRequest, Long id);
 }

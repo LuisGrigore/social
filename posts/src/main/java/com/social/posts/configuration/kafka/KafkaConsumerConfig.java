@@ -1,4 +1,4 @@
-package com.social.posts_details.config;
+package com.social.posts.configuration.kafka;
 
 
 import com.social.common.events.PostCreateEvent;
@@ -34,9 +34,10 @@ public class KafkaConsumerConfig {
         return props;
     }
 
+
     @Bean
-    public ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory() {
-        JsonDeserializer<PostCreateEvent> deserializer = new JsonDeserializer<>(PostCreateEvent.class);
+    public ConsumerFactory<String, PostDeleteEvent> postDeleteConsumerFactory() {
+        JsonDeserializer<PostDeleteEvent> deserializer = new JsonDeserializer<>(PostDeleteEvent.class);
         deserializer.addTrustedPackages("*");
 
         return new DefaultKafkaConsumerFactory<>(
@@ -47,12 +48,11 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostCreateEvent>> postCreateListenerContainerFactory(
-            ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory
-    ){
-        ConcurrentKafkaListenerContainerFactory<String, PostCreateEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(postCreateConsumerFactory);
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostDeleteEvent>> postDeleteListenerContainerFactory(
+            ConsumerFactory<String, PostDeleteEvent> postDeleteConsumerFactory
+    ) {
+        ConcurrentKafkaListenerContainerFactory<String, PostDeleteEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(postDeleteConsumerFactory);
         return factory;
     }
-
 }

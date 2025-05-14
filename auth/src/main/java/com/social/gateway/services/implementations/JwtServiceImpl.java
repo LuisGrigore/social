@@ -1,7 +1,7 @@
 package com.social.gateway.services.implementations;
 
-import com.social.common.dtos.ValidateRequest;
-import com.social.common.dtos.ValidateResponse;
+import com.social.common.dtos.UserValidationRequest;
+import com.social.common.dtos.UserValidationResponse;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.dtos.AuthenticationRequest;
 import com.social.gateway.exceptions.UserNotFoundException;
@@ -40,7 +40,7 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Override
-    public ValidateResponse validate(ValidateRequest validateRequest) throws TokenInvalidException {
+    public UserValidationResponse validate(UserValidationRequest validateRequest) throws TokenInvalidException {
         try {
             final String token = validateRequest.jwt();
             String username = jwtUtil.extractUsername(token);
@@ -56,7 +56,7 @@ public class JwtServiceImpl implements JwtService {
                 throw new TokenInvalidException("Token does not contain user ID.");
             }
 
-            return new ValidateResponse(id, username);
+            return new UserValidationResponse(id, username);
         } catch (Exception ex) {
             throw new TokenInvalidException(ex.getMessage());
         }

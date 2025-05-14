@@ -1,4 +1,4 @@
 package com.social.common.events;
 
-public record PostDeleteEvent() {
+public record PostDeleteEvent(Long id, String postName) {
 }

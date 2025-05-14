@@ -26,6 +26,14 @@ spring:
           uri: lb://POSTS
           predicates:
             - Path=/posts/**
+            - Method=GET,POST
+          filters:
+            - AuthenticationFilter
+        - id: post-details
+          uri: lb://POST-DETAILS
+          predicates:
+            - Path=/posts/**
+            - Method=DELETE
           filters:
             - AuthenticationFilter
 

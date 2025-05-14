@@ -1,9 +1,8 @@
-package com.social.posts.configuration.kafka;
+package com.social.posts_details.config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-
 import com.social.common.events.PostCreateEvent;
 import com.social.common.events.PostDeleteEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -52,8 +51,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, PostCreateEvent> postCreateEventKafkaTemplate() {
-        return kafkaTemplate(PostCreateEvent.class);
+    public KafkaTemplate<String, PostDeleteEvent> postDeleteEventKafkaTemplate() {
+        return kafkaTemplate(PostDeleteEvent.class);
     }
-
 }

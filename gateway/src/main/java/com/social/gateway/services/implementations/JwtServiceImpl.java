@@ -1,7 +1,7 @@
 package com.social.gateway.services.implementations;
 
-import com.social.common.dtos.ValidateRequest;
-import com.social.common.dtos.ValidateResponse;
+import com.social.common.dtos.UserValidationRequest;
+import com.social.common.dtos.UserValidationResponse;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.services.JwtService;
 import lombok.AllArgsConstructor;
@@ -18,16 +18,16 @@ public class JwtServiceImpl implements JwtService {
 
     private final WebClient.Builder webClientBuilder;
 
-    public Mono<ValidateResponse> validateToken(final String token){
+    public Mono<UserValidationResponse> validateToken(final String token){
         return webClientBuilder.build()
                 .post()
                 .uri("http://AUTH/auth/validate")
-                .bodyValue(new ValidateRequest(token))
+                .bodyValue(new UserValidationRequest(token))
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         response -> Mono.error(new TokenInvalidException("Invalid token."))
                 )
-                .bodyToMono(ValidateResponse.class);
+                .bodyToMono(UserValidationResponse.class);
     }
 
 }

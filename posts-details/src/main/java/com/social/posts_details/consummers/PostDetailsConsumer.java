@@ -24,12 +24,4 @@ public class PostDetailsConsumer {
         postDetailsService.savePostDetails(postCreateEvent);
     }
 
-    @KafkaListener(
-            topics = "post.delete",
-            groupId = "post-details",
-            containerFactory = "postDeleteListenerContainerFactory"
-    )
-    public void consumeUserDeleteEvent(PostDeleteEvent postDeleteEvent){
-        postDetailsService.deletePostDetails(postDeleteEvent);
-    }
 }

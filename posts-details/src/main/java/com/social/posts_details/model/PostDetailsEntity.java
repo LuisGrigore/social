@@ -1,9 +1,6 @@
 package com.social.posts_details.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,6 +14,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(indexes = {
+        @Index(name = "owner_index", columnList = "owner")
+})
 public class PostDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,5 +24,6 @@ public class PostDetailsEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
     private Long owner;
-    private String download_url;
+    private String downloadUrl;
+    private String postName;
 }

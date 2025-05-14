@@ -1,8 +1,8 @@
 package com.social.gateway.controllers;
 
 import com.social.common.dtos.ApiExceptionResponse;
-import com.social.common.dtos.ValidateRequest;
-import com.social.common.dtos.ValidateResponse;
+import com.social.common.dtos.UserValidationRequest;
+import com.social.common.dtos.UserValidationResponse;
 import com.social.common.exceptions.DuplicateException;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.dtos.*;
@@ -60,7 +60,7 @@ public class AuthController {
         return ResponseEntity.ok(userService.register(registerUserRequest));
     }
     @PostMapping("/validate")
-    public ResponseEntity<ValidateResponse> validate(@RequestBody ValidateRequest validateRequest) throws TokenInvalidException {
+    public ResponseEntity<UserValidationResponse> validate(@RequestBody UserValidationRequest validateRequest) throws TokenInvalidException {
         return ResponseEntity.ok(jwtService.validate(validateRequest));
     }
 }

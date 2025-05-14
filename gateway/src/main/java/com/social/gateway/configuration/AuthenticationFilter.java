@@ -1,10 +1,7 @@
 package com.social.gateway.configuration;
 
-import com.social.common.dtos.ValidateResponse;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.services.JwtService;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.io.buffer.DataBuffer;

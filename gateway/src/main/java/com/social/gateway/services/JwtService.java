@@ -1,9 +1,8 @@
 package com.social.gateway.services;
 
-import com.social.common.dtos.ValidateResponse;
-import com.social.common.exceptions.TokenInvalidException;
+import com.social.common.dtos.UserValidationResponse;
 import reactor.core.publisher.Mono;
 
 public interface JwtService {
-    Mono<ValidateResponse> validateToken(final String token);
+    Mono<UserValidationResponse> validateToken(final String token);
 }
