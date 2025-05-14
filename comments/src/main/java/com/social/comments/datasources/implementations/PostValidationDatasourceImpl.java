@@ -15,7 +15,7 @@ public class PostValidationDatasourceImpl implements PostValidationDatasource {
 
     @Override
     public boolean validatePostId(Long postId) {
-        String url = "http://POSTS/posts/" + postId;
+        String url = "http://POST-DETAILS/posts/" + postId + "/validate";
         try {
             ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
             return response.getStatusCode().is2xxSuccessful();

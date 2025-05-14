@@ -24,4 +24,10 @@ public class PostDetailsController {
     public ResponseEntity<PostDeleteResponse> deletePost(HttpServletRequest request, @RequestBody PostDeleteRequest postDeleteRequest){
         return ResponseEntity.ok(postDetailsService.deletePost(postDeleteRequest, Long.parseLong(request.getHeader("id"))));
     }
+
+    @GetMapping("/posts/{id}/validate")
+    public ResponseEntity<Void> validatePost(@PathVariable Long id){
+        postDetailsService.validatePost(id);
+        return ResponseEntity.ok(null);
+    }
 }

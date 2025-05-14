@@ -36,6 +36,13 @@ spring:
             - Method=GET
           filters:
             - AuthenticationFilter
+        - id: comments
+          uri: lb://COMMENTS
+          predicates:
+            - Path=/comments
+          filters:
+            - AuthenticationFilter
+
 
 
 

@@ -13,4 +13,6 @@ public interface PostDetailsService {
     void deletePostsByOwnerId(Long owner_id);
 
     GetPostsByUserResponse getPostsByUserId(Long id);
+
+    void validatePost(Long id);
 }

@@ -1,4 +1,4 @@
 package com.social.comments.dtos;
 
-public record CommentCreationResponse() {
+public record CommentCreationResponse(String content) {
 }

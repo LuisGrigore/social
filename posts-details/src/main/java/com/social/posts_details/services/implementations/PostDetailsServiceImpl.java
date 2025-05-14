@@ -63,4 +63,10 @@ public class PostDetailsServiceImpl implements PostDetailsService {
                 .toList();
         return new GetPostsByUserResponse(postGetResponses);
     }
+
+    @Override
+    public void validatePost(Long id) {
+        if (!postDetailsRepos.existsById(id))
+            throw new PostNotFoundException("Post with id: " + id + "not found");
+    }
 }
