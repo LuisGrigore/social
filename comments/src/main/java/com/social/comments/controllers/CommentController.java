@@ -22,7 +22,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @ExceptionHandler(DuplicateException.class)
+    @ExceptionHandler(PostNotFoundException.class)
     public ResponseEntity<ApiExceptionResponse> handleDuplicateException(PostNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiExceptionResponse(ex.getMessage(), Instant.now().toString(), HttpStatus.NOT_FOUND.value()));
     }
