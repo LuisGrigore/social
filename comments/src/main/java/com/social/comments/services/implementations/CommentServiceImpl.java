@@ -8,7 +8,7 @@ import com.social.comments.model.CommentEntity;
 import com.social.comments.repos.CommentRepos;
 import com.social.comments.services.CommentService;
 import com.social.comments.dtos.CommentGetDto;
-import com.social.comments.exceptions.PostNotFoundException;
+import com.social.common.exceptions.PostNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CommentCreationResponse createComment(CommentCreationRequest commentCreationRequest, Long id) {
         if (!postValidationDatasource.validatePostId(commentCreationRequest.postId()))
-            throw new RuntimeException("Post not found");
+            throw new PostNotFoundException("Post with id: " + commentCreationRequest.postId() + " not found.");
         CommentEntity savedComment = commentRepos.save(CommentEntity.builder()
                         .owner(id)
                         .post(commentCreationRequest.postId())
@@ -46,7 +46,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public GetCommentsByPostResponse getByPost(Long postId) throws  PostNotFoundException{
+    public GetCommentsByPostResponse getByPost(Long postId) throws PostNotFoundException {
         List<CommentGetDto> commentGetDtos = commentRepos.findByPost(postId).stream()
                 .map(commentEntity -> new CommentGetDto(commentEntity.getContent(), commentEntity.getOwner()))
                 .toList();

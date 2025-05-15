@@ -4,7 +4,6 @@ import com.social.common.dtos.PostDeleteRequest;
 import com.social.common.dtos.PostDeleteResponse;
 import com.social.common.events.PostCreateEvent;
 import com.social.posts_details.dtos.GetPostsByUserResponse;
-import com.social.posts_details.exceptions.PostNotFoundException;
 
 public interface PostDetailsService {
     void savePostDetails(PostCreateEvent postCreateEvent);
@@ -14,5 +13,5 @@ public interface PostDetailsService {
 
     GetPostsByUserResponse getPostsByUserId(Long id);
 
-    void validatePost(Long id);
+    boolean existsById(Long id);
 }

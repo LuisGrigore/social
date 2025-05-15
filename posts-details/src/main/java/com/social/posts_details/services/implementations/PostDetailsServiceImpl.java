@@ -5,7 +5,7 @@ import com.social.common.events.PostCreateEvent;
 import com.social.common.events.PostDeleteEvent;
 import com.social.posts_details.dtos.GetPostsByUserResponse;
 import com.social.posts_details.dtos.PostGetResponse;
-import com.social.posts_details.exceptions.PostNotFoundException;
+import com.social.common.exceptions.PostNotFoundException;
 import com.social.posts_details.model.PostDetailsEntity;
 import com.social.posts_details.producers.PostEventProducer;
 import com.social.posts_details.repos.PostDetailsRepos;
@@ -65,8 +65,7 @@ public class PostDetailsServiceImpl implements PostDetailsService {
     }
 
     @Override
-    public void validatePost(Long id) {
-        if (!postDetailsRepos.existsById(id))
-            throw new PostNotFoundException("Post with id: " + id + "not found");
+    public boolean existsById(Long id) {
+        return postDetailsRepos.existsById(id);
     }
 }

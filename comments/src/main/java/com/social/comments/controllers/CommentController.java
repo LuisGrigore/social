@@ -3,10 +3,9 @@ package com.social.comments.controllers;
 import com.social.comments.dtos.CommentCreationRequest;
 import com.social.comments.dtos.CommentCreationResponse;
 import com.social.comments.dtos.GetCommentsByPostResponse;
-import com.social.comments.exceptions.PostNotFoundException;
 import com.social.comments.services.CommentService;
 import com.social.common.dtos.ApiExceptionResponse;
-import com.social.common.exceptions.DuplicateException;
+import com.social.common.exceptions.NotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,8 +21,8 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @ExceptionHandler(PostNotFoundException.class)
-    public ResponseEntity<ApiExceptionResponse> handleDuplicateException(PostNotFoundException ex) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiExceptionResponse> handleNotFoundException(NotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiExceptionResponse(ex.getMessage(), Instant.now().toString(), HttpStatus.NOT_FOUND.value()));
     }
 

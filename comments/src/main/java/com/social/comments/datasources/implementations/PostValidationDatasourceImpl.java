@@ -18,7 +18,7 @@ public class PostValidationDatasourceImpl implements PostValidationDatasource {
         String url = "http://POST-DETAILS/posts/" + postId + "/validate";
         try {
             ResponseEntity<Void> response = restTemplate.getForEntity(url, Void.class);
-            return response.getStatusCode().is2xxSuccessful();
+            return response.getStatusCode().value() == 200;
         } catch (HttpClientErrorException.NotFound e) {
             return false;
         } catch (Exception e) {

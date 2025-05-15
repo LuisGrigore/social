@@ -50,6 +50,7 @@
 		<module>posts</module>
 		<module>posts-details</module>
 		<module>comments</module>
+		<module>follows</module>
 	</modules>
 
 
