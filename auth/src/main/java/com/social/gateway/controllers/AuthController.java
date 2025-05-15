@@ -6,8 +6,8 @@ import com.social.common.dtos.UserValidationResponse;
 import com.social.common.exceptions.DuplicateException;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.dtos.*;
-import com.social.gateway.exceptions.DuplicateUserException;
-import com.social.gateway.exceptions.UserNotFoundException;
+import com.social.common.exceptions.UserDuplicateException;
+import com.social.common.exceptions.UserNotFoundException;
 import com.social.gateway.services.JwtService;
 import com.social.gateway.services.UserService;
 import lombok.AllArgsConstructor;
@@ -56,7 +56,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody RegisterUserRequest registerUserRequest) throws DuplicateUserException {
+    public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody RegisterUserRequest registerUserRequest) throws UserDuplicateException {
         return ResponseEntity.ok(userService.register(registerUserRequest));
     }
     @PostMapping("/validate")

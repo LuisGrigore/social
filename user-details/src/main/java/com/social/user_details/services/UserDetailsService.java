@@ -5,4 +5,6 @@ import com.social.common.events.UserDeleteEvent;
 public interface UserDetailsService {
     void saveUserDetails(UserCreateEvent userCreateEvent);
     void deleteUserDetails(UserDeleteEvent userDeleteEvent);
+
+    void validate(Long userId);
 }

@@ -4,7 +4,7 @@ import com.social.common.dtos.UserValidationRequest;
 import com.social.common.dtos.UserValidationResponse;
 import com.social.common.exceptions.TokenInvalidException;
 import com.social.gateway.dtos.AuthenticationRequest;
-import com.social.gateway.exceptions.UserNotFoundException;
+import com.social.common.exceptions.UserNotFoundException;
 import com.social.gateway.model.UserAuthEntity;
 import com.social.gateway.services.JwtService;
 import com.social.gateway.services.UserService;

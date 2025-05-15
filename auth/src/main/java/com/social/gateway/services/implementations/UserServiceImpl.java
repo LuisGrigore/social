@@ -5,8 +5,8 @@ import com.social.gateway.dtos.DeleteAcountRequest;
 import com.social.gateway.dtos.DeleteAcountResponse;
 import com.social.gateway.dtos.RegisterUserRequest;
 import com.social.gateway.dtos.RegisterUserResponse;
-import com.social.gateway.exceptions.DuplicateUserException;
-import com.social.gateway.exceptions.UserNotFoundException;
+import com.social.common.exceptions.UserDuplicateException;
+import com.social.common.exceptions.UserNotFoundException;
 import com.social.gateway.exceptions.WrongPasswordException;
 import com.social.gateway.model.UserAuthEntity;
 import com.social.gateway.producers.UserEventProducer;
@@ -34,9 +34,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public RegisterUserResponse register(RegisterUserRequest registerUserRequest) throws DuplicateUserException{
+    public RegisterUserResponse register(RegisterUserRequest registerUserRequest) throws UserDuplicateException {
         if (userAuthRepos.findByUsername(registerUserRequest.username()).isPresent())
-            throw new DuplicateUserException("User " + registerUserRequest.username() + "already exists.");
+            throw new UserDuplicateException("User " + registerUserRequest.username() + "already exists.");
         UserAuthEntity userAuthEntity = userAuthRepos.save(userAuthMapper.toUserAuthEntity(registerUserRequest));
         userEventProducer.produceUserCreateEvent(userAuthMapper.toUserCreateEvent(userAuthEntity));
         return userAuthMapper.toRegisterUserResponse(userAuthEntity);

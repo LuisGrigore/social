@@ -2,8 +2,8 @@ package com.social.user_details.consumers;
 
 import com.social.common.events.UserCreateEvent;
 import com.social.common.events.UserDeleteEvent;
-import com.social.user_details.exceptions.DuplicateUserDetailsException;
-import com.social.user_details.exceptions.NotFoundUserDetailsException;
+import com.social.common.exceptions.UserDuplicateException;
+import com.social.common.exceptions.UserNotFoundException;
 import com.social.user_details.services.UserDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +25,9 @@ public class UserEventsConsumer {
     public void consumeUserCreateEvent(UserCreateEvent userCreateEvent){
         try {
             userDetailsService.saveUserDetails(userCreateEvent);
-        }catch (DuplicateUserDetailsException duplicateUserDetailsException)
+        }catch (UserDuplicateException userDuplicateException)
         {
-            log.error(duplicateUserDetailsException.getMessage(), duplicateUserDetailsException);
+            log.error(userDuplicateException.getMessage(), userDuplicateException);
         }
     }
 
@@ -39,9 +39,9 @@ public class UserEventsConsumer {
     public void consumeUserDeleteEvent(UserDeleteEvent userDeleteEvent){
         try {
             userDetailsService.deleteUserDetails(userDeleteEvent);
-        }catch (NotFoundUserDetailsException notFoundUserDetailsException)
+        }catch (UserNotFoundException userNotFoundException)
         {
-            log.error(notFoundUserDetailsException.getMessage(), notFoundUserDetailsException);
+            log.error(userNotFoundException.getMessage(), userNotFoundException);
         }
     }
 }
