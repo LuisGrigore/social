@@ -55,7 +55,28 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: follow
+          uri: lb://FOLLOW
+          predicates:
+            - Path=/follow/{followedID}
+          filters:
+            - AuthenticationFilter
 
+        - id: follow
+          uri: lb://FOLLOW
+          predicates:
+            - Path=/user/followed
+            - Method=GET
+          filters:
+            - AuthenticationFilter
+
+        - id: follow
+          uri: lb://FOLLOW
+          predicates:
+            - Path=/user/followers
+            - Method=GET
+          filters:
+            - AuthenticationFilter
 
 
 server:

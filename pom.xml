@@ -51,6 +51,7 @@
 		<module>posts-details</module>
 		<module>comments</module>
 		<module>follows</module>
+		<module>feed</module>
 	</modules>
 
 

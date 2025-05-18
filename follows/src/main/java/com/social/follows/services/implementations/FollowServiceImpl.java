@@ -1,8 +1,10 @@
 package com.social.follows.services.implementations;
 
+import com.social.common.exceptions.UserDuplicateException;
 import com.social.common.exceptions.UserNotFoundException;
 import com.social.follows.datasources.UserDetailsDatasource;
 import com.social.follows.dtos.FollowersByUserResponse;
+import com.social.follows.exceptions.FollowDuplicateException;
 import com.social.follows.exceptions.FollowNotFoundException;
 import com.social.follows.model.FollowEntity;
 import com.social.follows.repos.FollowRepos;
@@ -21,20 +23,24 @@ public class FollowServiceImpl implements FollowService{
     private final UserDetailsDatasource userDetailsDatasource;
 
     @Override
-    public void follow(Long followerId, Long followedID) throws UserNotFoundException{
-        if(!userDetailsDatasource.validateUserId(followedID))
-            throw new UserNotFoundException("User with id: " + followedID + " not found.");
+    public void follow(Long followerId, Long followedId) throws UserNotFoundException{
+        if(followerId.equals(followedId))
+            throw new UserDuplicateException("Follower id and Followed id can't be the same.");
+        if(followRepos.existsByFollowerIdAndFollowedId(followerId, followedId))
+            throw new FollowDuplicateException("User with id: " + followerId + " already follows user with id: " + followedId + ".");
+        if(!userDetailsDatasource.validateUserId(followedId))
+            throw new UserNotFoundException("User with id: " + followedId + " not found.");
         followRepos.save(FollowEntity.builder()
-                        .followedId(followedID)
+                        .followedId(followedId)
                         .followerId(followerId)
                 .build());
     }
 
     @Override
-    public void unfollow(Long followerId, Long followedID) throws FollowNotFoundException{
-        Optional<FollowEntity> followEntityOptional= followRepos.findByFollowerIdAndFollowedId(followerId, followedID);
+    public void unfollow(Long followerId, Long followedId) throws FollowNotFoundException{
+        Optional<FollowEntity> followEntityOptional= followRepos.findByFollowerIdAndFollowedId(followerId, followedId);
         if(followEntityOptional.isEmpty())
-            throw new FollowNotFoundException("User with id : " + followerId + " doesn't follow user with id : " + followedID + ".");
+            throw new FollowNotFoundException("User with id : " + followerId + " doesn't follow user with id : " + followedId + ".");
         followRepos.delete(followEntityOptional.get());
     }
 
