@@ -80,12 +80,12 @@ Documentación completa en Swagger: [http://localhost:8001/docs](http://localhos
 
 ---
 
-## 📡 Comunicación entre Servicios
+## 📡 Inter-Service Communication
 
-| Origen          | Destino           | Medio     |
-|----------------|-------------------|-----------|
-| auth-service   | user-service      | HTTP REST |
-| order-service  | notification-svc  | RabbitMQ  |
+| Emmiter        | Reciever          | Medium       |
+|----------------|-------------------|--------------|
+| auth-service   | user-service      | HTTP REST    |
+| order-service  | notification-svc  | Kafka queue  |
 
 ---
 
