@@ -1,7 +1,7 @@
 package com.social.follows.services;
 
 import com.social.common.exceptions.UserNotFoundException;
-import com.social.follows.dtos.FollowersByUserResponse;
+import com.social.common.dtos.FollowersByUserResponse;
 import com.social.follows.exceptions.FollowNotFoundException;
 
 public interface FollowService {

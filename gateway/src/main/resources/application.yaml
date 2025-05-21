@@ -78,6 +78,14 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: feed
+          uri: lb://FEED
+          predicates:
+            - Path=/feed/**
+            - Method=GET
+          filters:
+            - AuthenticationFilter
+
 
 server:
   port: 8080

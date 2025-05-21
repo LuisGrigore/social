@@ -3,7 +3,7 @@ package com.social.follows.controllers;
 import com.social.common.dtos.ApiExceptionResponse;
 import com.social.common.exceptions.DuplicateException;
 import com.social.common.exceptions.NotFoundException;
-import com.social.follows.dtos.FollowersByUserResponse;
+import com.social.common.dtos.FollowersByUserResponse;
 import com.social.follows.services.FollowService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;

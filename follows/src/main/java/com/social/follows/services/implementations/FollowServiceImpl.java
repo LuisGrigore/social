@@ -3,7 +3,7 @@ package com.social.follows.services.implementations;
 import com.social.common.exceptions.UserDuplicateException;
 import com.social.common.exceptions.UserNotFoundException;
 import com.social.follows.datasources.UserDetailsDatasource;
-import com.social.follows.dtos.FollowersByUserResponse;
+import com.social.common.dtos.FollowersByUserResponse;
 import com.social.follows.exceptions.FollowDuplicateException;
 import com.social.follows.exceptions.FollowNotFoundException;
 import com.social.follows.model.FollowEntity;

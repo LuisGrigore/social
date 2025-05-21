@@ -33,6 +33,9 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public void addPostToFeeds(PostCreateEvent postCreateEvent) {
-        List<Long> followers = followServiceDatasource.getFollowers(postCreateEvent.owner());
+        List<Long> followers = followServiceDatasource.getFollowers(postCreateEvent.owner()).stream()
+                .forEach(id -> feedRepos.save(FeedEntity.builder()
+                                .post(postCreateEvent.id)
+                        .build()));
     }
 }
