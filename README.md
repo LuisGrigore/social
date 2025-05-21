@@ -15,7 +15,7 @@
 
 ## 🧪 System Diagram:
 
-![Logo](./docs/SystemDiagram.png)
+![Logo](docs/SystemDiagram1.png)
 
 ---
 
