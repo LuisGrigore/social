@@ -1,5 +1,6 @@
 package com.social.feed.services.implementations;
 
+import com.social.common.dtos.PostGetResponse;
 import com.social.common.events.PostDetailsCreatedEvent;
 import com.social.feed.datasources.FollowServiceDatasource;
 import com.social.feed.dtos.GetFeedRepose;
@@ -20,8 +21,8 @@ public class FeedServiceImpl implements FeedService {
 
     @Override
     public GetFeedRepose getByUser(Long id) {
-        List<Long> feedPosts = feedRepos.getByOwner(id).stream()
-                .map(FeedEntity::getPost)
+        List<PostGetResponse> feedPosts = feedRepos.getByOwner(id).stream()
+                .map(feedEntity -> new PostGetResponse(feedEntity.getPost(), feedEntity.getOwner(), feedEntity.getContentUrl()))
                 .toList();
         return new GetFeedRepose(feedPosts);
     }
@@ -36,6 +37,7 @@ public class FeedServiceImpl implements FeedService {
         followServiceDatasource.getFollowers(postDetailsCreatedEvent.owner())
                 .forEach(id -> feedRepos.save(FeedEntity.builder()
                                 .post(postDetailsCreatedEvent.id())
+                                .contentUrl(postDetailsCreatedEvent.contentUrl())
                                 .owner(id)
                         .build()));
     }

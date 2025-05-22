@@ -14,7 +14,7 @@ public class PostEventProducerImpl implements PostEventProducer {
     private final KafkaTemplate<String, PostDeleteEvent> kafkaPostDeleteTemplate;
     private final KafkaTemplate<String, PostDetailsCreatedEvent> kafkaPostDetailsCreatedTemplate;
 
-
+    @Override
     public void producePostDeleteEvent(PostDeleteEvent postDeleteEvent) {
         kafkaPostDeleteTemplate.send("post.delete", postDeleteEvent);
     }

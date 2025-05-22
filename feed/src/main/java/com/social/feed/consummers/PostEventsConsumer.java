@@ -20,7 +20,6 @@ public class PostEventsConsumer {
             containerFactory = "postDetailsCreatedListenerContainerFactory"
     )
     public void consumePostDetailsCreatedEvent(PostDetailsCreatedEvent postDetailsCreatedEvent){
-        System.out.println("waaaaaaaaaaaaaaaaaaaaaa");
         feedService.addPostToFeeds(postDetailsCreatedEvent);
     }
 

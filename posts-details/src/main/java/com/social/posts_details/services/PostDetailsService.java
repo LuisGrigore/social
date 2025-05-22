@@ -7,7 +7,8 @@ import com.social.posts_details.dtos.GetPostsByUserResponse;
 import com.social.posts_details.model.PostDetailsEntity;
 
 public interface PostDetailsService {
-    PostDetailsEntity savePostDetails(PostCreateEvent postCreateEvent);
+    void savePostDetails(PostCreateEvent postCreateEvent);
+
     PostDeleteResponse deletePost(PostDeleteRequest postDeleteRequest, Long id);
 
     void deletePostsByOwnerId(Long owner_id);

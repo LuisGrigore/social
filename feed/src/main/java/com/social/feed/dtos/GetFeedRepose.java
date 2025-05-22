@@ -1,4 +1,8 @@
 package com.social.feed.dtos;
 
-public record GetFeedRepose(java.util.List<Long> feedPosts) {
+import com.social.common.dtos.PostGetResponse;
+
+import java.util.List;
+
+public record GetFeedRepose(List<PostGetResponse> postGetResponses) {
 }

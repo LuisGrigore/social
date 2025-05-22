@@ -23,4 +23,6 @@ public class FeedEntity {
     private Long owner;
     @Column(name = "post")
     private Long post;
+    @Column(name = "content_url")
+    private String contentUrl;
 }
