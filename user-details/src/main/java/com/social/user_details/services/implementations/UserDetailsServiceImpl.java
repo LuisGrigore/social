@@ -8,6 +8,9 @@ import com.social.user_details.repos.UserDetailsRepos;
 import com.social.user_details.services.UserDetailsService;
 import com.social.user_details.services.implementations.mappers.UserDetailsMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserDetailsMapper userDetailsMapper;
 
     @Override
+    @CachePut(value = "users", key = "#userCreateEvent.id")
     public void saveUserDetails(UserCreateEvent userCreateEvent) throws UserDuplicateException {
         if(userDetailsRepos.findById(userCreateEvent.id()).isPresent())
             throw new UserDuplicateException("User with id" + userCreateEvent.id() + " already exists.");
@@ -25,6 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
+    @CacheEvict(value = "users", key = "#userDeleteEvent.id")
     public void deleteUserDetails(UserDeleteEvent userDeleteEvent) throws UserNotFoundException {
         if(userDetailsRepos.findById(userDeleteEvent.id()).isEmpty())
             throw new UserNotFoundException("User with id" + userDeleteEvent.id() + " not found.");
@@ -32,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
+    @Cacheable(value = "users", key = "#id")
     public void validate(Long userId) {
         if(!userDetailsRepos.existsById(userId))
             throw new UserNotFoundException("User with id: " + userId + "doesn't exist.");

@@ -1,6 +1,6 @@
 package com.social.feed.consummers;
 
-import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDetailsCreatedEvent;
 import com.social.feed.services.FeedService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,13 +15,13 @@ public class PostEventsConsumer {
     private final FeedService feedService;
 
     @KafkaListener(
-            topics = "post.create",
+            topics = "post.details.created",
             groupId = "feed",
-            containerFactory = "postCreateListenerContainerFactory"
+            containerFactory = "postDetailsCreatedListenerContainerFactory"
     )
-    public void consumeUserCreateEvent(PostCreateEvent postCreateEvent){
+    public void consumePostDetailsCreatedEvent(PostDetailsCreatedEvent postDetailsCreatedEvent){
         System.out.println("waaaaaaaaaaaaaaaaaaaaaa");
-        feedService.addPostToFeeds(postCreateEvent);
+        feedService.addPostToFeeds(postDetailsCreatedEvent);
     }
 
 }

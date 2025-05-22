@@ -1,6 +1,6 @@
 package com.social.feed.services.implementations;
 
-import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDetailsCreatedEvent;
 import com.social.feed.datasources.FollowServiceDatasource;
 import com.social.feed.dtos.GetFeedRepose;
 import com.social.feed.model.FeedEntity;
@@ -32,10 +32,11 @@ public class FeedServiceImpl implements FeedService {
     }
 
     @Override
-    public void addPostToFeeds(PostCreateEvent postCreateEvent) {
-        List<Long> followers = followServiceDatasource.getFollowers(postCreateEvent.owner()).stream()
+    public void addPostToFeeds(PostDetailsCreatedEvent postDetailsCreatedEvent) {
+        followServiceDatasource.getFollowers(postDetailsCreatedEvent.owner())
                 .forEach(id -> feedRepos.save(FeedEntity.builder()
-                                .post(postCreateEvent.id)
+                                .post(postDetailsCreatedEvent.id())
+                                .owner(id)
                         .build()));
     }
 }

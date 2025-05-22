@@ -1,6 +1,7 @@
 package com.social.feed.services;
 
 import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDetailsCreatedEvent;
 import com.social.feed.dtos.GetFeedRepose;
 
 public interface FeedService {
@@ -8,5 +9,5 @@ public interface FeedService {
 
     void deleteByOwner(Long id);
 
-    void addPostToFeeds(PostCreateEvent postCreateEvent);
+    void addPostToFeeds(PostDetailsCreatedEvent postCreateEvent);
 }

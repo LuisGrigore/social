@@ -4,9 +4,10 @@ import com.social.common.dtos.PostDeleteRequest;
 import com.social.common.dtos.PostDeleteResponse;
 import com.social.common.events.PostCreateEvent;
 import com.social.posts_details.dtos.GetPostsByUserResponse;
+import com.social.posts_details.model.PostDetailsEntity;
 
 public interface PostDetailsService {
-    void savePostDetails(PostCreateEvent postCreateEvent);
+    PostDetailsEntity savePostDetails(PostCreateEvent postCreateEvent);
     PostDeleteResponse deletePost(PostDeleteRequest postDeleteRequest, Long id);
 
     void deletePostsByOwnerId(Long owner_id);

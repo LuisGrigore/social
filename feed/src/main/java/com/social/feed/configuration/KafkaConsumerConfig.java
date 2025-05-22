@@ -1,6 +1,6 @@
 package com.social.feed.configuration;
 
-import com.social.common.events.PostCreateEvent;
+import com.social.common.events.PostDetailsCreatedEvent;
 import com.social.common.events.UserDeleteEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -54,9 +54,30 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
+    //    @Bean
+    //    public ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory() {
+    //        JsonDeserializer<PostCreateEvent> deserializer = new JsonDeserializer<>(PostCreateEvent.class);
+    //        deserializer.addTrustedPackages("*");
+    //
+    //        return new DefaultKafkaConsumerFactory<>(
+    //                consumerConfig(),
+    //                new StringDeserializer(),
+    //                deserializer
+    //        );
+    //    }
+    //
+    //    @Bean
+    //    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostCreateEvent>> postCreateListenerContainerFactory(
+    //            ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory
+    //    ){
+    //        ConcurrentKafkaListenerContainerFactory<String, PostCreateEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    //        factory.setConsumerFactory(postCreateConsumerFactory);
+    //        return factory;
+    //    }
+
     @Bean
-    public ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory() {
-        JsonDeserializer<PostCreateEvent> deserializer = new JsonDeserializer<>(PostCreateEvent.class);
+    public ConsumerFactory<String, PostDetailsCreatedEvent> postDetailsCreatedConsumerFactory() {
+        JsonDeserializer<PostDetailsCreatedEvent> deserializer = new JsonDeserializer<>(PostDetailsCreatedEvent.class);
         deserializer.addTrustedPackages("*");
 
         return new DefaultKafkaConsumerFactory<>(
@@ -67,11 +88,11 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostCreateEvent>> postCreateListenerContainerFactory(
-            ConsumerFactory<String, PostCreateEvent> postCreateConsumerFactory
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, PostDetailsCreatedEvent>> postDetailsCreatedListenerContainerFactory(
+            ConsumerFactory<String, PostDetailsCreatedEvent> postDetailsCreatedConsumerFactory
     ){
-        ConcurrentKafkaListenerContainerFactory<String, PostCreateEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(postCreateConsumerFactory);
+        ConcurrentKafkaListenerContainerFactory<String, PostDetailsCreatedEvent> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(postDetailsCreatedConsumerFactory);
         return factory;
     }
 }

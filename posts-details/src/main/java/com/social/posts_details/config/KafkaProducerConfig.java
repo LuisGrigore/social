@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.social.common.events.PostCreateEvent;
 import com.social.common.events.PostDeleteEvent;
+import com.social.common.events.PostDetailsCreatedEvent;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,5 +54,10 @@ public class KafkaProducerConfig {
     @Bean
     public KafkaTemplate<String, PostDeleteEvent> postDeleteEventKafkaTemplate() {
         return kafkaTemplate(PostDeleteEvent.class);
+    }
+
+    @Bean
+    public KafkaTemplate<String, PostDetailsCreatedEvent> postDetailsCreatedEventKafkaTemplate() {
+        return kafkaTemplate(PostDetailsCreatedEvent.class);
     }
 }
