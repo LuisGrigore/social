@@ -16,6 +16,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserDetailsRepos userDetailsRepos;
     private final UserDetailsMapper userDetailsMapper;
+    //a
 
     @Override
     public void saveUserDetails(UserCreateEvent userCreateEvent) throws UserDuplicateException {
